@@ -14,6 +14,7 @@ dependencies = []
 [project.optional-dependencies]
 test = ["pytest>=8"]
 ortools = ["ortools>=9.10,<10"]
+figures = ["matplotlib>=3.8,<4"]
 
 [project.scripts]
 routeopt = "routeopt.cli:main"

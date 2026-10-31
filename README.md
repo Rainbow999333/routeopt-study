@@ -18,6 +18,8 @@ The bundled 24-order scenario is synthetic. Haversine distances are spherical ap
 
 ## Chongqing road experiment
 
+The [three-algorithm Linux comparison](docs/results.md) also records an optional OR-Tools run (3-second limit: 56.620 km), with independently checked routes and explicit limitations.
+
 The repository also includes 24 public OSM road junctions plus one simulated depot in Nan'an, Chongqing, with simulated item demand. A local OSRM 26.10.0 car-profile snapshot supplies the same directed matrix for every algorithm. These are not real business orders or a field deployment.
 
 | Scenario | NN km | NN + 2-opt km | Reduction | Used vehicles |

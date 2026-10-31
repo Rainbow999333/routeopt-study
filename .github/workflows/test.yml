@@ -24,5 +24,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
       - run: node --check web/app.js
       - run: node --test tests/test_web.mjs
+      - run: python tools/check_static_http.py
