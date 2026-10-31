@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# This input is identified by its exact byte hash across platforms.
+*.osm -text

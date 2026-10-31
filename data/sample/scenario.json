@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "scenario_id": "synthetic-24",
+  "depot": {
+    "node_id": "D",
+    "lat": 29.52,
+    "lng": 106.56,
+    "demand": 0
+  },
+  "orders": [
+    {
+      "node_id": "O001",
+      "lat": 29.515701,
+      "lng": 106.562467,
+      "demand": 2
+    },
+    {
+      "node_id": "O002",
+      "lat": 29.517827,
+      "lng": 106.561381,
+      "demand": 3
+    },
+    {
+      "node_id": "O003",
+      "lat": 29.512797,
+      "lng": 106.556654,
+      "demand": 1
+    },
+    {
+      "node_id": "O004",
+      "lat": 29.533347,
+      "lng": 106.560241,
+      "demand": 2
+    },
+    {
+      "node_id": "O005",
+      "lat": 29.532307,
+      "lng": 106.572032,
+      "demand": 1
+    },
+    {
+      "node_id": "O006",
+      "lat": 29.523674,
+      "lng": 106.569154,
+      "demand": 5
+    },
+    {
+      "node_id": "O007",
+      "lat": 29.504385,
+      "lng": 106.577393,
+      "demand": 3
+    },
+    {
+      "node_id": "O008",
+      "lat": 29.513342,
+      "lng": 106.564143,
+      "demand": 5
+    },
+    {
+      "node_id": "O009",
+      "lat": 29.527277,
+      "lng": 106.538131,
+      "demand": 3
+    },
+    {
+      "node_id": "O010",
+      "lat": 29.506748,
+      "lng": 106.579593,
+      "demand": 1
+    },
+    {
+      "node_id": "O011",
+      "lat": 29.530962,
+      "lng": 106.573464,
+      "demand": 3
+    },
+    {
+      "node_id": "O012",
+      "lat": 29.502579,
+      "lng": 106.5561,
+      "demand": 3
+    },
+    {
+      "node_id": "O013",
+      "lat": 29.503395,
+      "lng": 106.539199,
+      "demand": 5
+    },
+    {
+      "node_id": "O014",
+      "lat": 29.53228,
+      "lng": 106.559549,
+      "demand": 5
+    },
+    {
+      "node_id": "O015",
+      "lat": 29.517275,
+      "lng": 106.558029,
+      "demand": 3
+    },
+    {
+      "node_id": "O016",
+      "lat": 29.523191,
+      "lng": 106.555261,
+      "demand": 2
+    },
+    {
+      "node_id": "O017",
+      "lat": 29.537298,
+      "lng": 106.557513,
+      "demand": 1
+    },
+    {
+      "node_id": "O018",
+      "lat": 29.522926,
+      "lng": 106.571818,
+      "demand": 1
+    },
+    {
+      "node_id": "O019",
+      "lat": 29.532665,
+      "lng": 106.567085,
+      "demand": 5
+    },
+    {
+      "node_id": "O020",
+      "lat": 29.507396,
+      "lng": 106.581978,
+      "demand": 1
+    },
+    {
+      "node_id": "O021",
+      "lat": 29.536427,
+      "lng": 106.571565,
+      "demand": 1
+    },
+    {
+      "node_id": "O022",
+      "lat": 29.520522,
+      "lng": 106.555406,
+      "demand": 1
+    },
+    {
+      "node_id": "O023",
+      "lat": 29.537154,
+      "lng": 106.557251,
+      "demand": 4
+    },
+    {
+      "node_id": "O024",
+      "lat": 29.515537,
+      "lng": 106.551866,
+      "demand": 1
+    }
+  ],
+  "max_vehicles": 4,
+  "capacity": 25,
+  "description": "Synthetic coordinates and simulated item demand. Straight-line distances only; not real delivery operations.",
+  "coordinate_system": "WGS84",
+  "demand_unit": "items"
+}

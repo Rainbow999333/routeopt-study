@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="重庆南岸24个公共道路节点上的模拟配送实验：比较最近邻与2-opt，查看真实路网中的距离、容量和方向约束。">
+  <meta name="theme-color" content="#f4f3ed">
+  <title>路有解 · 重庆最后一公里路径实验</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#experiment">跳到路线实验</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#top" aria-label="路有解首页">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 25V8h20v17H16V15H6" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="6" cy="25" r="3" fill="currentColor"/></svg>
+      <span>路有解<span class="brand-en">ROUTEOPT</span></span>
+    </a>
+    <nav aria-label="主导航"><a href="#experiment">路线实验</a><a href="#method">方法与边界</a><a href="#evidence">复现证据 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-line"></span> 重庆南岸 · 最后一公里配送实验</p>
+        <h1 id="hero-title">少走一点弯路，<br>多一份<span class="serif-accent">实证。</span></h1>
+        <p class="intro">把道路、容量和算法放在同一张地图上。<br>从一条可行路线开始，看看局部优化究竟改变了什么。</p>
+        <a class="primary-link" href="#experiment">查看路线对比 <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="hero-note">
+        <span class="note-index">一场有边界的实验</span>
+        <p>真实道路节点。<br>模拟配送需求。<br>每个结果，都有来处。</p>
+        <div class="note-bottom"><span>OSM × OSRM</span><span>24 POINTS + 1 DEPOT</span></div>
+      </aside>
+      <div class="hero-metrics" aria-label="标准场景关键指标">
+        <div><span class="metric-label">配送节点</span><strong>24<small>个</small></strong><span class="metric-caption">另设 1 个模拟仓库</span></div>
+        <div><span class="metric-label">标准场景里程改善</span><strong id="hero-improvement">—<small>%</small></strong><span class="metric-caption">NN → NN + 2-opt</span></div>
+        <div><span class="metric-label">标准场景使用车辆</span><strong id="hero-vehicles">—<small>辆</small></strong><span class="metric-caption">车内顺序改善，分配保持不变</span></div>
+      </div>
+    </section>
+
+    <section id="experiment" class="experiment-section" aria-labelledby="experiment-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">路线实验</p><h2 id="experiment-title">同一张路网，两种走法。</h2></div><p>切换场景，比较结果。<br>所有方案均为离线预计算。</p></div>
+        <div id="load-error" role="alert" hidden>实验数据未能加载。请刷新页面重试；也可下载下方的离线对比表。</div>
+        <div class="experiment-toolbar">
+          <label class="scenario-field">实验场景<select id="scenario-select" disabled aria-describedby="scenario-help"><option>正在加载实验…</option></select></label>
+          <fieldset class="view-switch" disabled id="view-switch"><legend class="sr-only">路线显示方式</legend><label><input type="radio" name="view" value="both" checked><span>叠加对比</span></label><label><input type="radio" name="view" value="nn"><span>最近邻</span></label><label><input type="radio" name="view" value="2opt"><span>2-opt</span></label></fieldset>
+          <button id="play" class="play-button" disabled><span aria-hidden="true">▷</span> 播放路线</button>
+        </div>
+        <p id="scenario-help" class="scenario-help">正在读取已验证的实验记录…</p>
+        <div class="experiment-grid">
+          <div class="map-shell">
+            <div class="map-top"><span class="map-label">南岸 · 局部道路网络</span><div class="map-key"><span><i class="baseline-line"></i>最近邻</span><span><i class="optimized-line"></i>2-opt</span></div></div>
+            <svg id="route-map" viewBox="0 0 1000 700" role="img" aria-labelledby="map-title map-description"><title id="map-title">配送路线对比图</title><desc id="map-description">载入实验后显示重庆南岸真实道路上的预计算访问路线。</desc><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#d6ded6"/></pattern></defs><rect width="1000" height="700" fill="url(#grid)"/><g id="map-content"><path id="base-roads"/><g id="baseline-routes"></g><g id="optimized-routes"></g><g id="stop-markers"></g><g id="playback-markers"></g></g></svg>
+            <div class="map-controls" aria-label="地图缩放"><button id="zoom-in" aria-label="放大路线图">+</button><button id="zoom-out" aria-label="缩小路线图">−</button><button id="zoom-reset" aria-label="重置路线图">⌖</button></div>
+            <div id="stop-info" class="stop-info" role="status" aria-live="polite">圆点为模拟配送位置，方块为模拟仓库。</div>
+            <div class="map-bottom"><span>© OpenStreetMap contributors · ODbL</span><span>WGS84 · 静态道路快照</span></div>
+          </div>
+          <aside class="results-panel" aria-labelledby="result-title">
+            <p class="eyebrow">本场景结果</p><h3 id="result-title">路线更短，约束相同。</h3>
+            <div class="result-distance"><span>2-opt 总里程</span><strong id="distance">—<small>km</small></strong><p id="distance-change">正在读取对比…</p></div>
+            <dl class="result-facts"><div><dt>使用车辆</dt><dd id="vehicles">—</dd></div><div><dt>平均装载率</dt><dd id="load">—</dd></div><div><dt>容量 / 辆</dt><dd id="capacity">—</dd></div><div><dt>模拟需求总量</dt><dd id="demand">—</dd></div></dl>
+            <div class="feasibility" id="feasibility"><span aria-hidden="true">✓</span> 读取校验状态中</div>
+            <div class="route-list-head"><h4 id="route-list-title">2-opt 车辆路线</h4><button id="show-all" class="text-button">显示全部</button></div>
+            <div id="route-list" class="route-list"></div>
+            <p class="panel-note">点击车辆可突出对应路线。播放仅展示访问进度，不表示实时位置或预计到达时间。</p>
+          </aside>
+        </div>
+        <div class="comparison-area">
+          <div><h3>让数字接受同一把尺子的检验。</h3><p>同一组点位、同一份矩阵、同一套容量约束。<br>里程均经独立校验器重新计算。</p></div>
+          <div class="table-scroll"><table><caption class="sr-only">当前场景算法指标对比</caption><thead><tr><th scope="col">方案</th><th scope="col">里程 km</th><th scope="col">车辆</th><th scope="col">装载率</th><th scope="col">求解耗时</th><th scope="col">校验</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="method-section wrap" aria-labelledby="method-title">
+      <div class="section-heading"><div><p class="eyebrow">方法与边界</p><h2 id="method-title">先证明可行，再讨论更好。</h2></div><p>这是一项可复现的学习实验，<br>还不是一套真实运营调度系统。</p></div>
+      <div class="method-grid">
+        <article><span class="method-number">01</span><h3>先把路认清</h3><p>从重庆南岸局部 OSM 路网提取静态距离矩阵。所有实验节点均通过吸附和点对可达检查；保留单行路造成的方向差异。</p><span class="method-tag">公共道路节点 · 模拟需求</span></article>
+        <article><span class="method-number">02</span><h3>只改变一个环节</h3><p>最近邻构造容量可行路线，2-opt 改善同一辆车内部的访问顺序。每一次交换，都计算完整有向成本，不重新分配车辆。</p><span class="method-tag">容量约束 · 单仓 · 回仓</span></article>
+        <article><span class="method-number">03</span><h3>结果独立复核</h3><p>检查漏单、重复、超载、回仓与不可达路段。未通过校验的方案不展示正常改善率；没有成本模型，就不宣称节省了多少费用。</p><span class="method-tag">相同输入 · 相同校验器</span></article>
+      </div>
+      <div class="reflection"><span class="reflection-mark" aria-hidden="true">↳</span><div><p class="eyebrow">实验带来的一个提醒</p><h3>路程变短，不意味着车辆会变少。</h3><p>车内 2-opt 保持订单分配不变。更大的容量，也不保证贪心初解更短。比较不同场景时，应同时观察距离、用车与装载率，而不是只挑一个好看的百分比。</p></div></div>
+      <p class="limitations">本实验采用静态最快路径的距离快照，未模拟实时拥堵、配送时间窗、货车限高或全部实际限行。局部路网范围可能影响路线。结果未经过真实车辆配送验证，也未证明全局最优。</p>
+    </section>
+
+    <section id="evidence" class="evidence-section">
+      <div class="wrap evidence-grid"><div><p class="eyebrow">复现证据</p><h2>不止看见结果，<br>也能追溯过程。</h2><p>每份记录保留场景、矩阵指纹、算法参数和校验结果。<br>网页读取预计算公开包，不调用实时地图或求解服务。</p><div class="download-links"><a href="./data/comparison.csv" download>下载指标对比表 <span aria-hidden="true">↗</span></a><a href="./data/scenarios.json" download>下载公开结果 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="provenance"><dl><div><dt>路网来源</dt><dd>OpenStreetMap / OSRM</dd></div><div><dt>实验范围</dt><dd>重庆南岸 · 24 点 + 1 仓</dd></div><div><dt>路网快照</dt><dd id="snapshot-date">2026-11-01（北京时间）</dd></div><div><dt>矩阵 SHA-256</dt><dd id="matrix-hash" class="hash">正在读取…</dd></div><div><dt>数据许可</dt><dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">ODbL · © OpenStreetMap contributors</a></dd></div></dl><p>代码许可与道路数据许可分开。地址、需求和仓库用途不代表真实客户或企业业务。</p></div></div>
+    </section>
+  </main>
+  <footer class="wrap"><span>路有解 / ROUTEOPT</span><span>从问题出发，让每一步有据可循。</span><a href="#top">回到顶部 ↑</a></footer>
+</body>
+</html>

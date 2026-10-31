@@ -1,0 +1,634 @@
+{
+  "schema_version": "1.0",
+  "scenario_id": "chongqing-nanan-24-large-vehicle",
+  "run_id": "b982c26d966f244770ce",
+  "created_at": "2026-10-31T19:05:01.792600+00:00",
+  "scenario_sha256": "bb0023f1e593795067bcb1cf480f9b54a0cb1538a9d270d8e530b11a81387896",
+  "matrix_sha256": "a8c4280a9499318c0124a110807afce8d9031aa31989a7cfbf18a779879776e7",
+  "description": "大容量车辆。需求逐单乘以 1.0 后取整。重庆南岸公共道路节点上的模拟配送实验；需求、车辆与仓库用途均为模拟，非企业运营数据。",
+  "coordinate_system": "WGS84",
+  "data_mode": "precomputed",
+  "provider": "osrm",
+  "data_license": "ODbL-1.0",
+  "attribution": "© OpenStreetMap contributors",
+  "source_snapshot_sha256": "256584317e5df26c61fe12914ab4daf2624deed8f73c2aeb59068fe48e218421",
+  "matrix_created_at": "2026-10-31T18:57:33.895709+00:00",
+  "orders_count": 24,
+  "max_vehicles": 4,
+  "capacity": 70,
+  "demand_unit": "items",
+  "stops": [
+    {
+      "node_id": "D",
+      "lat": 29.5251669,
+      "lng": 106.574288,
+      "demand": 0,
+      "is_depot": true
+    },
+    {
+      "node_id": "O001",
+      "lat": 29.5396657,
+      "lng": 106.6044301,
+      "demand": 4,
+      "is_depot": false
+    },
+    {
+      "node_id": "O002",
+      "lat": 29.5068796,
+      "lng": 106.5501054,
+      "demand": 4,
+      "is_depot": false
+    },
+    {
+      "node_id": "O003",
+      "lat": 29.5083751,
+      "lng": 106.5991118,
+      "demand": 9,
+      "is_depot": false
+    },
+    {
+      "node_id": "O004",
+      "lat": 29.5372839,
+      "lng": 106.5500897,
+      "demand": 3,
+      "is_depot": false
+    },
+    {
+      "node_id": "O005",
+      "lat": 29.505511,
+      "lng": 106.5753666,
+      "demand": 3,
+      "is_depot": false
+    },
+    {
+      "node_id": "O006",
+      "lat": 29.544374,
+      "lng": 106.5826448,
+      "demand": 3,
+      "is_depot": false
+    },
+    {
+      "node_id": "O007",
+      "lat": 29.5248219,
+      "lng": 106.5967589,
+      "demand": 6,
+      "is_depot": false
+    },
+    {
+      "node_id": "O008",
+      "lat": 29.5221501,
+      "lng": 106.5562502,
+      "demand": 7,
+      "is_depot": false
+    },
+    {
+      "node_id": "O009",
+      "lat": 29.5405322,
+      "lng": 106.5659595,
+      "demand": 8,
+      "is_depot": false
+    },
+    {
+      "node_id": "O010",
+      "lat": 29.5337057,
+      "lng": 106.5874189,
+      "demand": 5,
+      "is_depot": false
+    },
+    {
+      "node_id": "O011",
+      "lat": 29.5151299,
+      "lng": 106.568309,
+      "demand": 5,
+      "is_depot": false
+    },
+    {
+      "node_id": "O012",
+      "lat": 29.5050279,
+      "lng": 106.5626861,
+      "demand": 10,
+      "is_depot": false
+    },
+    {
+      "node_id": "O013",
+      "lat": 29.5091861,
+      "lng": 106.5870091,
+      "demand": 10,
+      "is_depot": false
+    },
+    {
+      "node_id": "O014",
+      "lat": 29.5305132,
+      "lng": 106.5629007,
+      "demand": 4,
+      "is_depot": false
+    },
+    {
+      "node_id": "O015",
+      "lat": 29.5344767,
+      "lng": 106.5750459,
+      "demand": 5,
+      "is_depot": false
+    },
+    {
+      "node_id": "O016",
+      "lat": 29.516631,
+      "lng": 106.5813879,
+      "demand": 3,
+      "is_depot": false
+    },
+    {
+      "node_id": "O017",
+      "lat": 29.5329853,
+      "lng": 106.5992492,
+      "demand": 8,
+      "is_depot": false
+    },
+    {
+      "node_id": "O018",
+      "lat": 29.5156664,
+      "lng": 106.5509082,
+      "demand": 3,
+      "is_depot": false
+    },
+    {
+      "node_id": "O019",
+      "lat": 29.5296622,
+      "lng": 106.553898,
+      "demand": 10,
+      "is_depot": false
+    },
+    {
+      "node_id": "O020",
+      "lat": 29.5222824,
+      "lng": 106.5651488,
+      "demand": 9,
+      "is_depot": false
+    },
+    {
+      "node_id": "O021",
+      "lat": 29.5150296,
+      "lng": 106.559872,
+      "demand": 4,
+      "is_depot": false
+    },
+    {
+      "node_id": "O022",
+      "lat": 29.5150853,
+      "lng": 106.5961567,
+      "demand": 10,
+      "is_depot": false
+    },
+    {
+      "node_id": "O023",
+      "lat": 29.5371257,
+      "lng": 106.5587992,
+      "demand": 3,
+      "is_depot": false
+    },
+    {
+      "node_id": "O024",
+      "lat": 29.540544,
+      "lng": 106.5769491,
+      "demand": 5,
+      "is_depot": false
+    }
+  ],
+  "runs": [
+    {
+      "solver": "nn",
+      "status": "feasible",
+      "routes": [
+        [
+          "D",
+          "O020",
+          "O008",
+          "O019",
+          "O014",
+          "O023",
+          "O004",
+          "O018",
+          "O021",
+          "O011",
+          "O005",
+          "O016",
+          "O013",
+          "O007",
+          "D"
+        ],
+        [
+          "D",
+          "O015",
+          "O024",
+          "O006",
+          "O010",
+          "O009",
+          "O002",
+          "O012",
+          "O022",
+          "O003",
+          "O017",
+          "D"
+        ],
+        [
+          "D",
+          "O001",
+          "D"
+        ]
+      ],
+      "metrics": {
+        "feasible": true,
+        "violations": [],
+        "distance_km": 85.683,
+        "vehicles_used": 3,
+        "average_load_pct": 67.14285714285714,
+        "served_orders": 24,
+        "orders_total": 24,
+        "solver_elapsed_s": 7.749999713269062e-05
+      },
+      "improvement_pct": 0.0
+    },
+    {
+      "solver": "2opt",
+      "status": "feasible",
+      "routes": [
+        [
+          "D",
+          "O020",
+          "O008",
+          "O004",
+          "O023",
+          "O014",
+          "O019",
+          "O018",
+          "O021",
+          "O011",
+          "O005",
+          "O007",
+          "O013",
+          "O016",
+          "D"
+        ],
+        [
+          "D",
+          "O010",
+          "O006",
+          "O024",
+          "O015",
+          "O009",
+          "O002",
+          "O012",
+          "O003",
+          "O017",
+          "O022",
+          "D"
+        ],
+        [
+          "D",
+          "O001",
+          "D"
+        ]
+      ],
+      "metrics": {
+        "feasible": true,
+        "violations": [],
+        "distance_km": 81.3744,
+        "vehicles_used": 3,
+        "average_load_pct": 67.14285714285714,
+        "served_orders": 24,
+        "orders_total": 24,
+        "solver_elapsed_s": 0.001172000000224216
+      },
+      "improvement_pct": 5.028535415426645
+    }
+  ],
+  "geometry": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "solver": "nn",
+          "vehicle": 1,
+          "geometry_type": "visit_order_schematic",
+          "description": "Straight connections; not road-following navigation geometry."
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              106.574288,
+              29.5251669
+            ],
+            [
+              106.5651488,
+              29.5222824
+            ],
+            [
+              106.5562502,
+              29.5221501
+            ],
+            [
+              106.553898,
+              29.5296622
+            ],
+            [
+              106.5629007,
+              29.5305132
+            ],
+            [
+              106.5587992,
+              29.5371257
+            ],
+            [
+              106.5500897,
+              29.5372839
+            ],
+            [
+              106.5509082,
+              29.5156664
+            ],
+            [
+              106.559872,
+              29.5150296
+            ],
+            [
+              106.568309,
+              29.5151299
+            ],
+            [
+              106.5753666,
+              29.505511
+            ],
+            [
+              106.5813879,
+              29.516631
+            ],
+            [
+              106.5870091,
+              29.5091861
+            ],
+            [
+              106.5967589,
+              29.5248219
+            ],
+            [
+              106.574288,
+              29.5251669
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "solver": "nn",
+          "vehicle": 2,
+          "geometry_type": "visit_order_schematic",
+          "description": "Straight connections; not road-following navigation geometry."
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              106.574288,
+              29.5251669
+            ],
+            [
+              106.5750459,
+              29.5344767
+            ],
+            [
+              106.5769491,
+              29.540544
+            ],
+            [
+              106.5826448,
+              29.544374
+            ],
+            [
+              106.5874189,
+              29.5337057
+            ],
+            [
+              106.5659595,
+              29.5405322
+            ],
+            [
+              106.5501054,
+              29.5068796
+            ],
+            [
+              106.5626861,
+              29.5050279
+            ],
+            [
+              106.5961567,
+              29.5150853
+            ],
+            [
+              106.5991118,
+              29.5083751
+            ],
+            [
+              106.5992492,
+              29.5329853
+            ],
+            [
+              106.574288,
+              29.5251669
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "solver": "nn",
+          "vehicle": 3,
+          "geometry_type": "visit_order_schematic",
+          "description": "Straight connections; not road-following navigation geometry."
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              106.574288,
+              29.5251669
+            ],
+            [
+              106.6044301,
+              29.5396657
+            ],
+            [
+              106.574288,
+              29.5251669
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "solver": "2opt",
+          "vehicle": 1,
+          "geometry_type": "visit_order_schematic",
+          "description": "Straight connections; not road-following navigation geometry."
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              106.574288,
+              29.5251669
+            ],
+            [
+              106.5651488,
+              29.5222824
+            ],
+            [
+              106.5562502,
+              29.5221501
+            ],
+            [
+              106.5500897,
+              29.5372839
+            ],
+            [
+              106.5587992,
+              29.5371257
+            ],
+            [
+              106.5629007,
+              29.5305132
+            ],
+            [
+              106.553898,
+              29.5296622
+            ],
+            [
+              106.5509082,
+              29.5156664
+            ],
+            [
+              106.559872,
+              29.5150296
+            ],
+            [
+              106.568309,
+              29.5151299
+            ],
+            [
+              106.5753666,
+              29.505511
+            ],
+            [
+              106.5967589,
+              29.5248219
+            ],
+            [
+              106.5870091,
+              29.5091861
+            ],
+            [
+              106.5813879,
+              29.516631
+            ],
+            [
+              106.574288,
+              29.5251669
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "solver": "2opt",
+          "vehicle": 2,
+          "geometry_type": "visit_order_schematic",
+          "description": "Straight connections; not road-following navigation geometry."
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              106.574288,
+              29.5251669
+            ],
+            [
+              106.5874189,
+              29.5337057
+            ],
+            [
+              106.5826448,
+              29.544374
+            ],
+            [
+              106.5769491,
+              29.540544
+            ],
+            [
+              106.5750459,
+              29.5344767
+            ],
+            [
+              106.5659595,
+              29.5405322
+            ],
+            [
+              106.5501054,
+              29.5068796
+            ],
+            [
+              106.5626861,
+              29.5050279
+            ],
+            [
+              106.5991118,
+              29.5083751
+            ],
+            [
+              106.5992492,
+              29.5329853
+            ],
+            [
+              106.5961567,
+              29.5150853
+            ],
+            [
+              106.574288,
+              29.5251669
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "solver": "2opt",
+          "vehicle": 3,
+          "geometry_type": "visit_order_schematic",
+          "description": "Straight connections; not road-following navigation geometry."
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              106.574288,
+              29.5251669
+            ],
+            [
+              106.6044301,
+              29.5396657
+            ],
+            [
+              106.574288,
+              29.5251669
+            ]
+          ]
+        }
+      }
+    ]
+  }
+}
