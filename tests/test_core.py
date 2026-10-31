@@ -262,3 +262,10 @@ def test_skipped_solver_not_feasible_for_empty_problem():
     s = scenario(())
     result = evaluate(s, haversine_matrix(s), Solution("ortools", [], "skipped"))
     assert not result["feasible"]
+
+
+def test_cli_does_not_succeed_when_every_requested_solver_is_skipped(tmp_path, monkeypatch):
+    from routeopt import optional_ortools
+    monkeypatch.setattr(optional_ortools, "solve_ortools",
+                        lambda *_: Solution("ortools", [], "skipped", message="dependency unavailable"))
+    assert main(["demo", "--solvers", "ortools", "--out", str(tmp_path / "skipped.json")]) == 2

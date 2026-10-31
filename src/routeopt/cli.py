@@ -60,8 +60,10 @@ def main(argv=None):
         experiment = compare(scenario, matrix, solvers=solvers, repeat=repeat)
         write_json(args.out, experiment)
         print(markdown_report(experiment))
-        return 0 if all(r["metrics"]["feasible"] or r["status"] == "skipped"
-                        for r in experiment["runs"]) else 2
+        any_feasible = any(r["metrics"]["feasible"] for r in experiment["runs"])
+        all_acceptable = all(r["metrics"]["feasible"] or r["status"] == "skipped"
+                             for r in experiment["runs"])
+        return 0 if any_feasible and all_acceptable else 2
     except (ValueError, TypeError, KeyError, OSError) as exc:
         print(f"routeopt: {exc}", file=sys.stderr)
         return 2
