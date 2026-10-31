@@ -30,3 +30,4 @@ jobs:
       - run: node --check web/app.js
       - run: node --test tests/test_web.mjs
       - run: python tools/check_static_http.py
+      - run: python tools/check_web_reproducible.py

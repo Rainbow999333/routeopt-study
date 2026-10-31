@@ -17,7 +17,7 @@ def save(path, data):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--experiments", type=Path, default=Path("out/chongqing"))
+    parser.add_argument("--experiments", type=Path, default=Path("experiments/chongqing-2026-11-01"))
     parser.add_argument("--out", type=Path, default=Path("web/data"))
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
@@ -56,7 +56,7 @@ def main():
     save(args.out / "roads.json", {"license": "ODbL-1.0",
                                  "attribution": "© OpenStreetMap contributors", "roads": roads})
     with (args.out / "comparison.csv").open("w", encoding="utf-8-sig", newline="") as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator="\n")
         writer.writerow(["scenario", "algorithm", "feasible", "distance_km", "vehicles_used",
                          "load_pct", "solver_elapsed_s", "improvement_pct", "matrix_sha256"])
         for case in cases:
