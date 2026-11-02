@@ -1,48 +1,44 @@
 # Static website
 
-## Published release
+## Current production release (2026-11-03)
 
 - Production: https://routeopt-study.pages.dev/
-- Immutable deployment: https://7a4155d6.routeopt-study.pages.dev/
-- Static asset source: `29ebb2c63f25f8e872fed0da9d861fd08e2ef444`.
-- Cloudflare Pages Direct Upload, production branch `main`; only the eight files under `web/` are deployed.
-- Verified on 2026-11-03 (Asia/Shanghai), Chromium 154 on the existing free Linux test machine. All 32 browser checks passed: four widths (360/430/1024/1440), four scenarios, NN/2-opt visibility, vehicle selection, playback/pause, zoom/reset, keyboard focus/selection, real downloads and matching bytes, mobile touch, reduced motion, missing-data controls and recovery. Normal execution had no browser runtime/console errors.
-- All eight production resources separately returned HTTP 200 and matched the reviewed release byte-for-byte; JavaScript MIME types were checked. Default Python urllib identification received HTTP 403; the explicit `RouteoptReleaseCheck/1.0` client succeeded, as did curl and the browser. No access-control settings were changed.
-- Reports: [browser](verification/browser-2026-11-03.json), [public resources](verification/public-http-2026-11-03.json). Screenshots and a 15-second actual-playback MP4 are retained in the separate submission evidence folder, outside the website.
+- Immutable deployment: https://29bcfbb1.routeopt-study.pages.dev/
+- Static asset source: `e3377e9aa4e77106fdb9fec6a80f3c97d2351fc7`, CI [41500867966](https://github.com/Rainbow999333/routeopt-study/actions/runs/41500867966): all five jobs successful (Windows/Linux, Python3.11/3.13 and website).
+- Cloudflare Pages Direct Upload, production branch `main`; only the nine reviewed files under `web/` are deployed. The default GitHub branch is `main`, homepage is the production URL, topics include vehicle-routing/logistics/osrm/openstreetmap, and the footer links to source.
+- Four precomputed simulated-demand road scenarios remain unchanged. Time and variable-cost interpretation is separate from the 21-parcel historical-task counterfactual study. No visitor input is sent to a server, and no online solver is claimed.
 
-The account owner confirmed on 2026-11-03 that the production site opens and interactions work on their phone over mobile data. This is user-reported acceptance, separate from the automated browser evidence; phone model, browser and carrier were not recorded. It does not establish reachability on every carrier or browser. Personal career report/PPT and contest submission are also separate from this technical release.
+The final candidate passed the complete [32-check original route regression](verification/history-route-regression-2026-11-03.json) and [24 historical checks](verification/history-candidate-2026-11-03.json). After production deployment, Chromium154 on the existing free Linux test machine passed [24 historical checks](verification/history-public-2026-11-03.json) and [35 time/cost checks](verification/history-decision-public-2026-11-03.json), covering 360/430/1024/1440 widths, disclosures, actual downloads, unusual rate inputs, independent missing-data failures and recovery. Normal execution had no runtime/console errors. Mobile/desktop screenshots were visually reviewed.
 
-Future releases can use `wrangler pages deploy web --project-name routeopt-study --branch main` after the account owner authenticates. Preserve the previous release ZIP and deployment URL for rollback. This project already exists on Pages; no migration or temporary hosting account is needed.
+All [nine public resources](verification/history-http-2026-11-03.json) returned HTTP200, matched the reviewed source byte-for-byte, and had appropriate JavaScript MIME types. One local connection ended with a TLS EOF; a single retry completed all nine. No TLS verification or access control was disabled. An earlier release required the explicit `RouteoptReleaseCheck/1.0` user agent because the default urllib identification received403.
 
-## Repository presentation update (2026-11-03)
+Local verification: 82 Python tests passed, 2 optional tests skipped; 8 Node tests passed; five generated data files reproduced byte-for-byte; nine local HTTP resources passed. Cloud optional solver verification and saved original experiments remain separate evidence.
 
-The default GitHub and Pages production branch is now main. The repository homepage points to the production website and topics include vehicle-routing, logistics, osrm and openstreetmap. The footer links to the public source. Nine additional live browser checks covered footer visibility/overflow at four widths and an actual GitHub-tab opening; see [footer report](verification/footer-2026-11-03.json). This update changes no experiment data.
+The account owner confirmed on 2026-11-03 that the original production site opens and interactions work on their phone over mobile data. This user feedback predates the historical enhancement; no fresh user phone acceptance is claimed. Device/browser/carrier were not recorded, and this does not establish every network or browser. Personal career report/PPT and contest submission remain separate.
 
-## Rebuild
-
-Build directly from the committed verified scenario runs:
+## Rebuild and hosting
 
 ```bash
 python tools/build_web.py
 python tools/check_web_reproducible.py
 node --check web/app.js
 node --test tests/test_web.mjs
+python tools/check_static_http.py
 python -m http.server 8765 --bind 127.0.0.1 --directory web
 ```
 
-Publish only web/ to Cloudflare Pages or ModelScope Static. No runtime framework, external CDN, hosted map, API key, account login, compute instance or online solver is needed for visitors. Browser interaction selects precomputed scenarios; it does not claim to rerun optimization.
+The builder reads committed experiment records from `experiments/chongqing-2026-11-01` and the reviewed aggregate `data/lade-study/public-summary.json`; no private historical records or road service is needed. New baseline experiments require a new directory and `build_web.py --experiments`, plus reviewed geometry as appropriate.
 
-The static directory includes reviewed scenarios, road geometry, an OSM background road network and CSV comparisons. All URLs are relative and no SPA route fallback is required. Preserve index.html, app.js, model.mjs, styles.css and data/.
+Publish **only `web/`** using the existing account-authorized project:
 
-By default the builder reads experiments/chongqing-2026-11-01, which is included in a fresh clone. Re-running algorithms is optional. For a new experiment use a new output directory with run_chongqing.py, then pass that directory explicitly using build_web.py --experiments. A new result may require additional road geometry, which must be checked before publication.
+```bash
+wrangler pages deploy web --project-name routeopt-study --branch main
+```
 
-Road data uses ODbL-1.0 with attribution. Review every source field before publishing. Do not deploy the repository root, private local files, wheel/build output or complete experiment directories. Local data has been selected from public OSM road nodes and simulated item demand; no customer data or third-party map credentials.
+Keep index.html, app.js, model.mjs, styles.css and data/ with relative URLs. No framework, external CDN, live map API, API key, backend, database, visitor login or compute instance is required. Do not deploy the repository root, private research files, wheel/build output, credentials or raw task records. Road extracts use ODbL attribution; historical aggregates retain LaDe attribution, license discrepancy and modeling caveats. The application inserts historical text using textContent, validates the aggregate schema, and isolates historical fetch failure from original controls.
 
-Browser verification must cover scenario selection, NN/2-opt overlays, vehicle highlight, playback/pause, zoom/reset, downloads, keyboard focus, narrow/mobile/desktop widths, reduced motion and missing data. A terminal test or successful static HTTP response alone does not prove these.
+## Rollback and verification
 
+Previous immutable deployment https://8c4aa831.routeopt-study.pages.dev/ contains the time/cost module without the historical section (asset source `18133fc`). Older footer/original versions and static ZIPs remain in the private release-backup directory. Re-publish a reviewed previous `web/` archive to the existing Pages project if rollback is needed; preserve its source identity. No account migration, security changes or paid resource is required.
 
-## Historical-task candidate verification (2026-11-03)
-
-A separate 21-parcel historical-task section was added without replacing the four simulated-demand scenarios. It reports aggregate results only, with source attribution, the unconfirmed coordinate datum and modeled vehicle/depot assumptions visible. Historical data loading fails independently of the original route/decision module.
-
-The final candidate passed 24 historical browser checks at 360/430/1024/1440 widths, including assumptions disclosure, actual summary download bytes, missing-summary isolation and recovery; see [candidate report](verification/history-candidate-2026-11-03.json). The complete original 32-check route/playback regression also passed on the same candidate. Local verification: 82 Python tests passed, 2 optional tests skipped; 8 Node tests passed; five generated data files reproduced byte-for-byte; nine static HTTP resources passed. This paragraph describes the candidate; production history verification is recorded separately after deployment.
+After any relevant release, check scenario/vehicle/overlay/playback/zoom interactions, keyboard/touch and narrow layouts, reduced motion, real download bytes, unusual cost rates, historical disclosures and independent loading failures/recovery. HTTP200 alone does not establish browser behavior. Screenshots and the earlier 15-second actual-playback recording are submission evidence outside the website; older media retain their original release provenance.
