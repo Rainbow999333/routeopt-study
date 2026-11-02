@@ -1,0 +1,28 @@
+{
+  "source": "https://overpass-api.de/api/interpreter",
+  "query": "[out:xml][timeout:60][maxsize:67108864];way[\"highway\"][\"highway\"!~\"^(footway|path|steps|cycleway|pedestrian|bridleway|construction|proposed|abandoned|platform)$\"](29.797,106.395,29.847,106.449)->.roads;(.roads;rel(bw.roads)[\"type\"=\"restriction\"];);(._;>;);out body;",
+  "bbox_south_west_north_east": [
+    29.797,
+    106.395,
+    29.847,
+    106.449
+  ],
+  "downloaded_at": "2026-11-02T16:52:36.416329+00:00",
+  "osm_base": "2026-11-02T16:51:21Z",
+  "original_response_sha256": "f20218c51c25618a370d48816be1e58f142e7a8627c111d67d58bcc302cfcb2c",
+  "saved_extract_sha256": "bbabfccfd47e0d45d73a62fcbe32bd718ce5d32626529c7b3df7a3cab28648e2",
+  "saved_bytes": 819520,
+  "nodes": 7601,
+  "ways": 719,
+  "relations": 0,
+  "license": "ODbL-1.0",
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "license_url": "https://www.openstreetmap.org/copyright",
+  "privacy": "OSM contributor usernames, user IDs and changeset IDs removed",
+  "redistribution": {
+    "original_saved_extract_sha256": "bbabfccfd47e0d45d73a62fcbe32bd718ce5d32626529c7b3df7a3cab28648e2",
+    "removed_non_routing_fields": 1,
+    "sanitized_sha256": "1afe4474a454ae8d04f92ca6ad0c92bbb748565cc3130e315eae0f92d8498e4f",
+    "note": "Only contributor identity and contact/address tags removed; preserve original private input; route-cost equivalence checked separately"
+  }
+}

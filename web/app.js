@@ -1,4 +1,4 @@
-import {verifyData, routeCoordinates, makeProjection, pathString, dispatchComparison} from "./model.mjs";
+import {verifyData, routeCoordinates, makeProjection, pathString, dispatchComparison, verifyHistoricalStudy} from "./model.mjs";
 
 const $ = id => document.getElementById(id);
 const ns = "http://www.w3.org/2000/svg";
@@ -237,4 +237,25 @@ async function boot() {
     console.error("Routeopt data initialization failed:", error.message);
   }
 }
+async function bootHistory() {
+  try {
+    const history = verifyHistoricalStudy(await getData("history.json", 128 * 1024));
+    $("history-quality").textContent = history.orders + " 条包裹记录 · " + history.positions + " 个脱敏位置 · " + history.simulated_depots + " 个模拟起终点 · 假设最多 " + history.assumed_max_vehicles + " 辆车、容量 " + history.assumed_capacity_items + " 件/辆。顺序检查 " + history.quality.selected_after_quality_attempts + " 个完整批次后选中；本组最大吸附 " + metric(history.quality.max_snap_m_including_depot, 2) + " 米，全点对可达。";
+    $("history-body").replaceChildren();
+    for (const run of history.runs) {
+      const row = document.createElement("tr");
+      for (const text of [label(run.solver), metric(run.distance_km, 3), run.total_drive_minutes === null ? "未提供" : metric(run.total_drive_minutes, 2), String(run.vehicles), run.solver === "nn" ? "基准" : metric(run.improvement_pct, 2) + "%"]) {
+        const cell = document.createElement("td"); cell.textContent = text; row.append(cell);
+      }
+      $("history-body").append(row);
+    }
+    $("history-assumptions").replaceChildren();
+    for (const text of history.assumptions) { const li = document.createElement("li"); li.textContent = text; $("history-assumptions").append(li); }
+    $("history-status").hidden = true; $("history-content").hidden = false;
+  } catch {
+    $("history-content").hidden = true;
+    $("history-status").textContent = "独立历史案例暂时未能加载；上方24点模拟实验仍可使用。";
+  }
+}
 boot();
+bootHistory();

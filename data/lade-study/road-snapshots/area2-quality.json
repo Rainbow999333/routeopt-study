@@ -1,0 +1,112 @@
+{
+  "all_complete_eligible": 999,
+  "within_buffered_extract": 13,
+  "selection": "first lexicographic eligible complete group in fixed extract with all <=50m snaps and all-pairs reachable; no optimization inspected",
+  "coordinate_datum": "unconfirmed; road snapping tests only the released-coordinates-as-WGS84 hypothesis",
+  "attempts": [
+    {
+      "source_group_sha256": "0a2af70decee16842cf0f09832db1053c5a8a193e6e5a07021959a3627ee5b34",
+      "orders": 27,
+      "stops": 27,
+      "max_snap_m": 167.6756799,
+      "over_50m": 11,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "dfc2271888c51f9d4988184cbd940c6fc3873bec65ea64c754ee1f48120de1b4",
+      "orders": 20,
+      "stops": 20,
+      "max_snap_m": 72.89466425,
+      "over_50m": 2,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "162d3df1bbedec9b58a8db45db3ab0b2c68fa0158c61bfdbc07140a18731529e",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 79.99678327,
+      "over_50m": 6,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "73b9ddcea7b78fc26bb93dde868088e574c031d22a7a27c3ea7b13894dfff971",
+      "orders": 21,
+      "stops": 21,
+      "max_snap_m": 73.96206183,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "0ddf3d077f1a00d8192deddcf89bfd4f6031e542dba073b27eaaf3b4d116b088",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 272.569428,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "636882acb83943098fef18217b32cf0f538c7e0cba664ce5b006238e24fee18b",
+      "orders": 24,
+      "stops": 24,
+      "max_snap_m": 175.5318046,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "ccb6db8002bd657fa0947fc55c28bd6089f519665a8ec957e8940aa4f94732f1",
+      "orders": 21,
+      "stops": 21,
+      "max_snap_m": 195.0990212,
+      "over_50m": 5,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "67092130e102c70b817b7ace5e797200497a0deff477ab8bdcc06b0eb21d086f",
+      "orders": 21,
+      "stops": 21,
+      "max_snap_m": 74.86655734,
+      "over_50m": 2,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "2a46d38dcd418c4251baf6acf394b3d62cba698161f2613fb91c3611e9a5d389",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 74.87452778,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "4ab05264427659351b9b5988b4744aeb2a92f085ff1bc83b04753119a889e19c",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 216.4147204,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "d4be6cf12a392d6942d3450db96a58db085d0896b03aca1dfef88f94b7a10696",
+      "orders": 20,
+      "stops": 20,
+      "max_snap_m": 64.39107026,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "db50fb691f7785764d6292e02cd49e5a382a641b89d840066e3fafb3a15fe694",
+      "orders": 25,
+      "stops": 25,
+      "max_snap_m": 292.6192652,
+      "over_50m": 8,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "71f9b4ecec5c46954ae77257911a6d475a7b908fb53542574a879a26b090e8d2",
+      "orders": 24,
+      "stops": 24,
+      "max_snap_m": 275.1754153,
+      "over_50m": 12,
+      "unreachable_cells": 0
+    }
+  ]
+}

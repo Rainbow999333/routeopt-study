@@ -1,0 +1,26 @@
+{
+  "source_costs_unchanged": true,
+  "areas": [
+    {
+      "area": 1,
+      "attempts": 35,
+      "quality_identical": true
+    },
+    {
+      "area": 2,
+      "attempts": 13,
+      "quality_identical": true
+    },
+    {
+      "area": 3,
+      "attempts": 8,
+      "quality_identical": true
+    },
+    {
+      "area": 4,
+      "attempts": 4,
+      "quality_identical": true
+    }
+  ],
+  "solver_not_rerun": true
+}

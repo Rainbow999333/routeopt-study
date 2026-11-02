@@ -1,3 +1,20 @@
+export function verifyHistoricalStudy(value) {
+  const allowed = new Set(["schema_version", "case_id", "study_type", "orders", "positions", "simulated_depots", "assumed_capacity_items", "assumed_max_vehicles", "matrix_sha256", "scenario_sha256", "source_repository", "source_revision", "source_sha256", "selected_source_sha256", "quality", "data_notice", "assumptions", "runs"]);
+  if (!value || Object.keys(value).length !== allowed.size || Object.keys(value).some(k => !allowed.has(k)) || value.schema_version !== "1.0" || value.study_type !== "historical_tasks_counterfactual_routing") throw new Error("historical summary schema invalid");
+  const privateKeys = new Set(["lat", "lng", "stops", "routes", "order_id", "courier_id", "region_id", "aoi_id", "accept_time", "delivery_time", "ds"]);
+  function walk(item) { if (item && typeof item === "object") for (const [key, child] of Object.entries(item)) { if (privateKeys.has(key)) throw new Error("private historical fields"); walk(child); } }
+  walk(value);
+  if (!Number.isInteger(value.orders) || value.orders < 20 || value.orders > 500 || !Number.isInteger(value.positions) || value.positions < 20 || value.positions > 30 || value.orders < value.positions || value.simulated_depots !== 1) throw new Error("historical counts invalid");
+  for (const name of ["matrix_sha256", "scenario_sha256", "source_sha256", "selected_source_sha256"]) if (!/^[a-f0-9]{64}$/.test(value[name])) throw new Error("historical fingerprint invalid");
+  const q = value.quality;
+  if (q?.threshold_m !== 50 || !Number.isFinite(q.max_snap_m_including_depot) || q.max_snap_m_including_depot < 0 || q.max_snap_m_including_depot > 50 || q.all_pairs_reachable !== true || q.selection_before_solving !== true || typeof q.coordinate_datum_confirmed !== "boolean" || !Number.isInteger(q.selected_after_quality_attempts) || q.selected_after_quality_attempts < 1) throw new Error("historical road gate failed");
+  if (!Array.isArray(value.assumptions) || value.assumptions.length < 4 || value.assumptions.length > 12 || value.assumptions.some(s => typeof s !== "string" || s.length > 800)) throw new Error("historical assumptions missing");
+  if (!Array.isArray(value.runs) || value.runs.length !== 3 || new Set(value.runs.map(r => r.solver)).size !== 3 || value.runs.some(r => !["nn", "2opt", "ortools"].includes(r.solver) || r.feasible !== true || !Number.isFinite(r.distance_km) || r.distance_km < 0 || !Number.isInteger(r.vehicles) || r.vehicles < 1 || [r.total_drive_minutes, r.longest_drive_minutes].some(t => t !== null && (!Number.isFinite(t) || t < 0)))) throw new Error("historical results invalid");
+  const baseline = value.runs.find(r => r.solver === "nn").distance_km;
+  if (!(baseline > 0) || value.runs.some(r => !Number.isFinite(r.improvement_pct) || Math.abs(r.improvement_pct - (baseline - r.distance_km) / baseline * 100) > 1e-6)) throw new Error("historical improvement invalid");
+  return value;
+}
+
 export function dispatchComparison(scenario, rateText) {
   if (typeof rateText !== "string" || !rateText.trim() || rateText.length > 24) throw new Error("cost rate invalid");
   const rate = Number(rateText);

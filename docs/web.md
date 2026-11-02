@@ -40,3 +40,9 @@ Road data uses ODbL-1.0 with attribution. Review every source field before publi
 
 Browser verification must cover scenario selection, NN/2-opt overlays, vehicle highlight, playback/pause, zoom/reset, downloads, keyboard focus, narrow/mobile/desktop widths, reduced motion and missing data. A terminal test or successful static HTTP response alone does not prove these.
 
+
+## Historical-task candidate verification (2026-11-03)
+
+A separate 21-parcel historical-task section was added without replacing the four simulated-demand scenarios. It reports aggregate results only, with source attribution, the unconfirmed coordinate datum and modeled vehicle/depot assumptions visible. Historical data loading fails independently of the original route/decision module.
+
+The final candidate passed 24 historical browser checks at 360/430/1024/1440 widths, including assumptions disclosure, actual summary download bytes, missing-summary isolation and recovery; see [candidate report](verification/history-candidate-2026-11-03.json). The complete original 32-check route/playback regression also passed on the same candidate. Local verification: 82 Python tests passed, 2 optional tests skipped; 8 Node tests passed; five generated data files reproduced byte-for-byte; nine static HTTP resources passed. This paragraph describes the candidate; production history verification is recorded separately after deployment.

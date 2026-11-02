@@ -1,10 +1,12 @@
 # routeopt
 
+面向城市配送路线优化与调度的学习实践：用公开路网、模拟需求和独立的脱敏历史任务案例，解释路线、时间与费用，并保留可复核的模型条件。
+
 A reproducible toolkit for last-mile delivery route optimization: compare a capacity-constrained nearest-neighbor baseline with directed-safe 2-opt, validate solutions independently, and export experiment records.
 
 Live experiment: **https://routeopt-study.pages.dev/** — four precomputed Chongqing road scenarios, simulated demand, no online solver or visitor login. See [deployment and verification](docs/web.md).
 
-The website includes [static driving-time and variable-cost interpretation](docs/decision.md) for dispatch decisions. Costs are explicitly visitor assumptions, not measured operating savings. A separate [LaDe Chongqing research audit](docs/lade-research.md) checks public historical records without presenting unvalidated orders as a real-road result.
+The website includes [static driving-time and variable-cost interpretation](docs/decision.md) for dispatch decisions. Costs are explicitly visitor assumptions, not measured operating savings. A separate [LaDe Chongqing research audit](docs/lade-research.md) now includes a separate 21-parcel historical-task case: NN 12.053 km, 2-opt 11.874 km and optional 3-second OR-Tools 9.209 km. The 50 m road gate is preserved; source datum, depot and vehicle assumptions remain explicit. It is counterfactual research, not observed enterprise savings.
 
 ## Quick start
 

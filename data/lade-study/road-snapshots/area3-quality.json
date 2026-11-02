@@ -1,0 +1,72 @@
+{
+  "all_complete_eligible": 999,
+  "within_buffered_extract": 8,
+  "selection": "first lexicographic eligible complete group in fixed extract with all <=50m snaps and all-pairs reachable; no optimization inspected",
+  "coordinate_datum": "unconfirmed; road snapping tests only the released-coordinates-as-WGS84 hypothesis",
+  "attempts": [
+    {
+      "source_group_sha256": "53e4a425981fb4b9b984ec8a63d084fd72b904e044942eb41ad3d2afe2e90462",
+      "orders": 23,
+      "stops": 22,
+      "max_snap_m": 142.1587539,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "43bc1187d6fbdbca797bde263a67cd1125be5fa9d8ac8908709c34a3358e99d7",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 102.9260078,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "4e4ec492c12eb7830c5c4ca92f5133a90775b5794079a8e6c1977192a7827931",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 81.70229228,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "b40d4567abac123bbe4e0cdce09b3fd03947c1b44522dd1e984ded0433f430a3",
+      "orders": 24,
+      "stops": 24,
+      "max_snap_m": 154.1909005,
+      "over_50m": 10,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "11123155b03d06ef061b6dcf3502d692fe7d4ebf951870340e6332b5b64134a4",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 160.8594418,
+      "over_50m": 9,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "7ed30242afcf57f73ac07c75604963844a842639fde8dcfeb5c5e05e2cb6f315",
+      "orders": 20,
+      "stops": 20,
+      "max_snap_m": 154.8228586,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "328a3999faf09952dc25fd0466fc15a92dfcc1e9a16fcc9bfd3d0930d057946a",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 162.4667683,
+      "over_50m": 9,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "6351c1559adbc459c25e0ba723c9bcbc29c6a113f34521dac10b1d64b98b2d94",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 155.5159784,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    }
+  ]
+}

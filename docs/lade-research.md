@@ -1,32 +1,39 @@
-# LaDe Chongqing research audit
+# LaDe 重庆历史任务：反事实路线研究
 
-This is an additional research track, separate from the existing Nan'an road experiment. No historical-order route result has passed publication review yet. The existing experiment remains **real public roads with simulated demand**.
+此案例独立于南岸24点模拟需求实验。它使用公开脱敏历史包裹任务，配合模拟仓库与车队条件，比较同一静态路网下的算法结果；不是企业现场调度验证。
 
-Source: [Cainiao-AI/LaDe-D](https://huggingface.co/datasets/Cainiao-AI/LaDe-D), revision `e1f85a3339848b9eb606ce543fcaaba3f4be1893`, Chongqing Parquet only (61,844,340 bytes, SHA256 `ea503be5d475aa9a3ceb27f09ce6f910f48a02e78122428fbb4f9c724820323b`).
+## 来源与使用边界
 
-The HF card labels Apache-2.0; the [authors' paper](https://arxiv.org/html/2306.10675v3) specifies CC BY-NC 4.0 for the dataset. We record the discrepancy and limit this work to attributed non-commercial research, following the more restrictive stated use. Raw order records, courier identifiers, individual timestamps and trajectories are not included in this code repository or the public website. No endorsement or business relationship with Cainiao is implied.
+来源：[Wu 等 / 菜鸟 LaDe-D](https://huggingface.co/datasets/Cainiao-AI/LaDe-D)，固定 revision `e1f85a3339848b9eb606ce543fcaaba3f4be1893`，仅重庆 Parquet，61,844,340字节，SHA256 `ea503be5d475aa9a3ceb27f09ce6f910f48a02e78122428fbb4f9c724820323b`。
 
-The paper describes privacy perturbations. A latitude/longitude range check does not establish the coordinate reference system or justify reconstructing original customer locations. Public-road alignment must be checked separately; no silent coordinate conversion or point relocation is allowed.
+HF 数据卡标注 Apache-2.0，[作者论文的数据许可说明](https://arxiv.org/html/2306.10675v3)为 CC BY-NC 4.0。两者存在差异，本项目保留差异、署名并按非商业研究边界处理；代码 MIT 许可不改变上游数据许可。原始订单、发布位置、配送员标识、个体时间和轨迹不进入公开仓库或网页，不暗示菜鸟认可或业务合作。
 
-## Pre-optimization selection
+论文描述位置隐私扰动，但源坐标基准尚未明确。按 WGS84 解释发布值是建模假设；范围检查及道路吸附通过均不能证明基准正确。没有平移、转换坐标、反推客户地址或删掉难匹配订单。
 
-1. Validate the pinned source size/hash; do not replace a different local input silently.
-2. Group by the released date, region and courier. Reject an entire group if it contains invalid coordinates/times or duplicate order IDs; do not quietly discard bad rows from an otherwise retained group.
-3. Keep complete groups with 20–30 distinct released positions, all acceptance events no later than the first completion, and a maximum span of 0.04 degrees per dimension.
-4. Inspect groups in fixed lexicographic order. Acquire only buffered local road extracts, test all retained positions at a maximum **50 m** road-snap distance and require all-pairs reachability. Record every exclusion before running an optimizer. The user explicitly chose to preserve this gate and continue checking complete groups.
+## 先质量检查，再求解
 
-The corrected full-source audit found 931,351 rows; 93 failed the broad coordinate-range check and 3 more had invalid/reversed times. There are 999 eligible complete groups before road validation. The earlier weaker count of 1,006 is superseded because groups containing removed rows must also be excluded.
+全量审计931,351行，93行未过宽范围坐标检查，另3行时间无效或倒置。按发布日期、区域、配送员分组，整组排除含无效行或重复订单的批次，保留20–30个不同发布位置、全部接收不晚于首次完成、经纬跨度各不超过0.04度的完整组，共999候选。早期较弱口径1006已被替代。
 
-The first 22-position batch failed the road gate (two positions >50 m, maximum 89.84 m). All 35 eligible groups within that first buffered extract failed; a second extract also produced no passing group among its 13 eligible groups. No order was dropped to make a batch pass. These checks show a modeling/road-alignment limitation, not incorrect delivery by the original courier.
+区域按固定顺序检查：从尚未被既有缓冲区域覆盖的首个合格组获取局部路网；各区域内按分组键词典序检查。该规则不是随机抽样，也不是所有999组的全局日期顺序。每组必须所有点吸附≤50米且全点对可达，不检查优化收益后挑选样本。四片路网分别检查35、13、8、4组，总计60组，第60组首次通过。首个22点批次有2点超过50米、最大89.84米；失败记录也保留。
 
-## Interpretation gates
+选中21条包裹、21个发布位置。加入模拟仓库后22×22矩阵全可达，最大吸附35.95068817米。用户明确选择保持50米门槛继续检查其他完整批次；未降低门槛。
 
-Even a passing snap test does not prove the source datum, original depot or vehicle type. A complete set accepted before its first completion is not proof that every task was known at actual departure. Any later experiment must state its assumed decision time, depot, transport mode and capacity separately. Completion timestamps are observations, not promised time windows; accept-to-complete time is not pure driving time. Neither historical-order sorting nor the resulting shortest modeled route establishes real cash savings.
+## 同条件实验结果
 
-Offline audit command (requires pandas/pyarrow in a research environment, tested with pandas 3.1.0 and pyarrow 26.0.0):
+| 算法 | 公里 | 静态累计车分钟 | 车辆 | 相对NN里程改善 |
+|---|---:|---:|---:|---:|
+| NN | 12.0530 | 23.0683 | 1 | 基线 |
+| NN + 2-opt | 11.8741 | 22.6833 | 1 | 1.4843% |
+| OR-Tools（3秒时限） | 9.2090 | 18.7400 | 1 | 23.5958% |
 
-```bash
-python tools/audit_lade.py --directory data/local/lade-research
-```
+三个结果均独立验证容量、覆盖、回仓及原矩阵成本。仅执行一次比较（repeat=1），没有多次重跑择优，也不声称全局最优。时间是静态行驶估计，不含停车、服务、交通波动和工资口径。
 
-The input is intentionally excluded by `data/local/`. Audit output remains private until field-level publication review; code MIT licensing does not relicense upstream data. Existing road/scenario archives are never overwritten by this research track.
+每包裹记1件；完全同位置可聚合件数，不能丢单。模拟仓库为距发布位置重心最近的公共道路交叉节点；假设最多1车、容量50件、当前 OSM car.lua 路网。决策时刻设为批次最后接收时刻；“接收早于首次完成”不能证明真实出车时已经知道全部任务。完成时间不是承诺时间窗。当前道路不还原历史道路和车种条件。
+
+该案例只能说明在这些条件下可比较方案；单个经道路质量筛选的批次不能代表重庆全市、企业平均收益或实际运营成本。标准场景网页的可调元/车公里费用是假设敏感性测算，不能套用为企业实测降本。
+
+## 复核与复现
+
+[数据目录说明](../data/lade-study/README.md)给出固定输入、道路快照和离线复现步骤。四片对外道路副本仅去掉贡献者身份及非路由地址/联系标签；原件私有保留。重建后60组质量结果完全相同，选中案例距离/时间矩阵逐格相同，没有重新求解。
+
+公开质量报告不含个体日期时间、ID或坐标。公开摘要只包含聚合结果、假设和指纹。由于原任务不再分发，完整复现者需自行从原作者固定版本取得数据；公开源码/路网/摘要检查可离线执行。

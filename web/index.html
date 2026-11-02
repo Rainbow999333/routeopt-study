@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="重庆南岸24个公共道路节点上的模拟配送实验：比较最近邻与2-opt，查看真实路网中的距离、容量和方向约束。">
+  <meta name="description" content="面向城市配送调度的学习研究：24点模拟需求与21条公开历史包裹任务，比较路线、静态行驶时间及费用假设，公开方法和使用边界。">
   <meta name="theme-color" content="#f4f3ed">
   <title>路有解 · 重庆最后一公里路径实验</title>
   <link rel="stylesheet" href="./styles.css">
@@ -16,23 +16,23 @@
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 25V8h20v17H16V15H6" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="6" cy="25" r="3" fill="currentColor"/></svg>
       <span>路有解<span class="brand-en">ROUTEOPT</span></span>
     </a>
-    <nav aria-label="主导航"><a href="#experiment">路线实验</a><a href="#method">方法与边界</a><a href="#evidence">复现证据 <span aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="主导航"><a href="#experiment">路线实验</a><a href="#history">历史任务</a><a href="#method">方法与边界</a><a href="#evidence">复现证据 <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main id="top">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="small-line"></span> 重庆南岸 · 最后一公里配送实验</p>
         <h1 id="hero-title">少走一点弯路，<br>多一份<span class="serif-accent">实证。</span></h1>
-        <p class="intro">把道路、容量和算法放在同一张地图上。<br>从一条可行路线开始，看看局部优化究竟改变了什么。</p>
+        <p class="intro">从配送调度问题出发，比较路线、时间与费用。<br>记录结果，也交代每个结果成立的条件。</p>
         <a class="primary-link" href="#experiment">查看路线对比 <span aria-hidden="true">↓</span></a>
       </div>
       <aside class="hero-note">
         <span class="note-index">一场有边界的实验</span>
-        <p>真实道路节点。<br>模拟配送需求。<br>每个结果，都有来处。</p>
+        <p>开放路网快照。<br>模拟与历史任务。<br>每个结果，都有来处。</p>
         <div class="note-bottom"><span>OSM × OSRM</span><span>24 POINTS + 1 DEPOT</span></div>
       </aside>
       <div class="hero-metrics" aria-label="标准场景关键指标">
-        <div><span class="metric-label">配送节点</span><strong>24<small>个</small></strong><span class="metric-caption">另设 1 个模拟仓库</span></div>
+        <div><span class="metric-label">标准场景配送节点</span><strong>24<small>个</small></strong><span class="metric-caption">另设 1 个模拟仓库</span></div>
         <div><span class="metric-label">标准场景里程改善</span><strong id="hero-improvement">—<small>%</small></strong><span class="metric-caption">NN → NN + 2-opt</span></div>
         <div><span class="metric-label">标准场景使用车辆</span><strong id="hero-vehicles">—<small>辆</small></strong><span class="metric-caption">车内顺序改善，分配保持不变</span></div>
       </div>
@@ -83,6 +83,20 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="history" class="history-section wrap" aria-labelledby="history-title">
+      <div class="section-heading"><div><p class="eyebrow">公开历史任务 · 独立研究</p><h2 id="history-title">用历史任务，再检验一次。</h2></div><p>面向配送调度的离线方案比选。<br>与上方24点模拟场景数据不同。</p></div>
+      <p class="history-caveat">历史包裹记录＋模拟仓库与容量。源坐标基准尚未明确，以下按发布坐标作建模假设；道路吸附通过不等于已经复原真实客户位置或当年配送线路。</p>
+      <p id="history-status" role="status">正在读取独立研究记录…</p>
+      <div id="history-content" hidden>
+        <p id="history-quality" class="scenario-help"></p>
+        <div class="table-scroll"><table><caption>同一历史任务批次与同一静态路网模型；不代表企业实际运营收益</caption><thead><tr><th scope="col">方案</th><th scope="col">里程 km</th><th scope="col">行驶分钟</th><th scope="col">车辆</th><th scope="col">相对NN</th></tr></thead><tbody id="history-body"></tbody></table></div>
+        <p class="history-interpretation">用统一约束比较方案，先核验任务完整性，再判断是否有执行价值。单个经过质量筛选的批次不能外推全市或企业平均效果。</p>
+        <details class="history-assumptions"><summary>查看实验假设与使用边界</summary><ul id="history-assumptions"></ul><p>所有结果都未经过真实车辆实地验证；OR-Tools设置3秒时限，未证明全局最优。原始订单、位置、配送员ID与个体轨迹不随网站发布。</p></details>
+      </div>
+      <p class="history-credit">来源：Wu 等 / 菜鸟 LaDe，<a href="https://huggingface.co/datasets/Cainiao-AI/LaDe-D" target="_blank" rel="noopener noreferrer">数据卡</a> · <a href="https://arxiv.org/abs/2306.10675" target="_blank" rel="noopener noreferrer">论文</a>。论文的数据许可说明为CC BY-NC 4.0，数据卡标注Apache-2.0；本研究按署名、非商业边界处理并保留差异。道路：<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors · ODbL</a>。</p>
+      <a class="history-download" href="./data/history.json" download>下载脱敏研究汇总 ↗</a>
     </section>
 
     <section id="method" class="method-section wrap" aria-labelledby="method-title">

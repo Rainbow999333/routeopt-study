@@ -1,0 +1,37 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "date": "2026-11-02T18:16:57.745Z",
+  "checks": [
+    "historical rows 360",
+    "quality and uncertainty 360",
+    "baseline remains separate 360",
+    "no overflow 360",
+    "assumptions toggle 360",
+    "historical rows 430",
+    "quality and uncertainty 430",
+    "baseline remains separate 430",
+    "no overflow 430",
+    "assumptions toggle 430",
+    "historical rows 1024",
+    "quality and uncertainty 1024",
+    "baseline remains separate 1024",
+    "no overflow 1024",
+    "assumptions toggle 1024",
+    "historical rows 1440",
+    "quality and uncertainty 1440",
+    "baseline remains separate 1440",
+    "no overflow 1440",
+    "assumptions toggle 1440",
+    "real historical download matches reviewed bytes",
+    "no normal runtime errors",
+    "historical failure does not break baseline",
+    "recovery after historical data error"
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.57",
+    "revision": "@73c14f6228d7cd537c855007e8f88678969cc0eb",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.11"
+  }
+}

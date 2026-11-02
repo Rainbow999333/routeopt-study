@@ -1,0 +1,30 @@
+[
+  {
+    "area": 1,
+    "original_saved_extract_sha256": "bbabfccfd47e0d45d73a62fcbe32bd718ce5d32626529c7b3df7a3cab28648e2",
+    "removed_non_routing_fields": 1,
+    "sanitized_sha256": "1afe4474a454ae8d04f92ca6ad0c92bbb748565cc3130e315eae0f92d8498e4f",
+    "note": "Only contributor identity and contact/address tags removed; preserve original private input; route-cost equivalence checked separately"
+  },
+  {
+    "area": 2,
+    "original_saved_extract_sha256": "5ca2b3ca07d7d0051cbf371f5dd0d313cde61f22398edcfb95bf7d7dd367727b",
+    "removed_non_routing_fields": 0,
+    "sanitized_sha256": "5ca2b3ca07d7d0051cbf371f5dd0d313cde61f22398edcfb95bf7d7dd367727b",
+    "note": "Only contributor identity and contact/address tags removed; preserve original private input; route-cost equivalence checked separately"
+  },
+  {
+    "area": 3,
+    "original_saved_extract_sha256": "f867076be88b7980a775f63881202e3646bdfa37e39d821fdd5bf461ff2d2862",
+    "removed_non_routing_fields": 0,
+    "sanitized_sha256": "f867076be88b7980a775f63881202e3646bdfa37e39d821fdd5bf461ff2d2862",
+    "note": "Only contributor identity and contact/address tags removed; preserve original private input; route-cost equivalence checked separately"
+  },
+  {
+    "area": 4,
+    "original_saved_extract_sha256": "773e081106b11724403405006e6c3993377890b5414984a65bfd1c6cda0f1c14",
+    "removed_non_routing_fields": 0,
+    "sanitized_sha256": "773e081106b11724403405006e6c3993377890b5414984a65bfd1c6cda0f1c14",
+    "note": "Only contributor identity and contact/address tags removed; preserve original private input; route-cost equivalence checked separately"
+  }
+]

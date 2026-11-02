@@ -22,7 +22,7 @@ def main():
     checked = []
     try:
         for name in ["index.html", "styles.css", "app.js", "model.mjs",
-                     "data/scenarios.json", "data/geometry.json", "data/roads.json", "data/comparison.csv"]:
+                     "data/scenarios.json", "data/geometry.json", "data/roads.json", "data/comparison.csv", "data/history.json"]:
             with urllib.request.urlopen(base + "/" + name, timeout=5) as response:
                 body = response.read()
                 assert response.status == 200

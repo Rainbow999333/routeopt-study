@@ -1,0 +1,48 @@
+{
+  "all_complete_eligible": 999,
+  "within_buffered_extract": 4,
+  "selection": "first lexicographic eligible complete group in fixed extract with all <=50m snaps and all-pairs reachable; no optimization inspected",
+  "coordinate_datum": "unconfirmed; road snapping tests only the released-coordinates-as-WGS84 hypothesis",
+  "attempts": [
+    {
+      "source_group_sha256": "617cd96cf03b3bdd3d408bf80054caa2677b1f611943f1294f0211fa86ada74f",
+      "orders": 21,
+      "stops": 21,
+      "max_snap_m": 77.88896257,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "1dfda8a74d7836d470647e033d542b18101b6b8e2c093156877ee8718484906d",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 59.67448858,
+      "over_50m": 1,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "2744ef2f8518b06ddf5ecbd50eaa76f452675419c57db7ce0a359aa90be413f3",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 105.9436937,
+      "over_50m": 5,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "8f32964d78490618f20f44fad18f066fd9e38a06d5bed016a98f40ebfc20df56",
+      "orders": 21,
+      "stops": 21,
+      "max_snap_m": 35.95068817,
+      "over_50m": 0,
+      "unreachable_cells": 0
+    }
+  ],
+  "selected": {
+    "source_group_sha256": "8f32964d78490618f20f44fad18f066fd9e38a06d5bed016a98f40ebfc20df56",
+    "orders": 21,
+    "stops": 21,
+    "max_snap_m": 35.95068817,
+    "over_50m": 0,
+    "unreachable_cells": 0
+  }
+}

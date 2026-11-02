@@ -1,0 +1,288 @@
+{
+  "all_complete_eligible": 999,
+  "within_buffered_extract": 35,
+  "selection": "first lexicographic eligible complete group in fixed extract with all <=50m snaps and all-pairs reachable; no optimization inspected",
+  "coordinate_datum": "unconfirmed; road snapping tests only the released-coordinates-as-WGS84 hypothesis",
+  "attempts": [
+    {
+      "source_group_sha256": "e92e067d396787480fed042aba479d97d6c49105d58e2bb67d9fd89dadfb6263",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 89.83592857,
+      "over_50m": 2,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "b571155928f18ef433dca40da17db8b4d5d3069e68fc5f71aa23e3f7358d12f9",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 84.92294541,
+      "over_50m": 2,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "e08c06c8d44d3211d4975bb1b92a0d2d3002c3a0588d780a0a28ef2b6b615e31",
+      "orders": 28,
+      "stops": 28,
+      "max_snap_m": 91.61527916,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "bf6e6653dedab60c160330f697a770d62c02d4f69e358d77bfe45fdcd21c362e",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 102.0925339,
+      "over_50m": 5,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "deba5d1acc5f33c708d00f52695a5e44caca9ebae5842f2e9c4f837e8fc17936",
+      "orders": 29,
+      "stops": 29,
+      "max_snap_m": 97.44473332,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "6eca8af48d0d081321cb8b030f9255f841fcab2d7066edc6669cbf4f9fbc7d10",
+      "orders": 24,
+      "stops": 24,
+      "max_snap_m": 98.39491187,
+      "over_50m": 6,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "ee6e300fb9453d8cb92bad0a4c509880ddeb0dd2ed5194fb6385df9c53216dee",
+      "orders": 24,
+      "stops": 24,
+      "max_snap_m": 85.06961614,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "59b733fd06917f04c3f6dfe54a8609a44ab9a73f437e90409cc7f23c6a3c6212",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 91.121523,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "ff90559d25f5a7387fb7edebf0db0019ab8d4807d6a90b6741796d6202d9e0f2",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 91.09834194,
+      "over_50m": 8,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "c658bece23d1089dfb089d8a402577378fd343cec85d772bb85e8d42199cc22a",
+      "orders": 25,
+      "stops": 25,
+      "max_snap_m": 87.88076849,
+      "over_50m": 6,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "4078841d1456bdc0019c96a50c8056fcfd848a1cff87ac5ed158f06105ecefd2",
+      "orders": 27,
+      "stops": 27,
+      "max_snap_m": 92.29064363,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "b696b55aa86b49f296c9617a77724f25280a24e71e5627639fa1f983b4127a3f",
+      "orders": 21,
+      "stops": 21,
+      "max_snap_m": 90.73524173,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "f31c6b878c689e4928c74733b5e630de955fd4ef9b81400867ee69f2fd3ec7fb",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 89.47115375,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "6975198dfbd808cbd8b802bb014a7e358e7233424450688284ff53bca20a1e33",
+      "orders": 29,
+      "stops": 29,
+      "max_snap_m": 91.32192823,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "9a7157e56efa7e8cdcb74929f6753d799d6e025355f6aba2e0a134727e6efd75",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 89.97120635,
+      "over_50m": 6,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "34c214dc71df04f9f5bcaff433290bbefbe58a50fd385b200efbb73f88a204bb",
+      "orders": 20,
+      "stops": 20,
+      "max_snap_m": 64.22578068,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "8c0af6741ff3d37a5c8abaca793a22df97d2bea00e9f1be7825fe30140f3e075",
+      "orders": 29,
+      "stops": 29,
+      "max_snap_m": 87.89102082,
+      "over_50m": 5,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "0a8ee5f2a37d65dda2f6c4a0248ee69ca1ce95809f03c7a72968ab12af869ceb",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 86.18500387,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "0708e38851a217f2b5853bd4e373db0ed31d7af56bd5b30de054c51b7557d8fa",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 61.77509108,
+      "over_50m": 2,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "155ee34b76d2e5f15a1dcd9398dc266e8777a7c0dfb9d137d809b858dfc8e298",
+      "orders": 23,
+      "stops": 23,
+      "max_snap_m": 89.02755618,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "4cc2af20edc00e08287de184c32e98d5c7350444c6143fd37fc5f85b34427e30",
+      "orders": 25,
+      "stops": 25,
+      "max_snap_m": 88.50447349,
+      "over_50m": 5,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "6bdaef429ebc96b2f544a1aba2d2603375ca510dc2ec630fe4cb63d7bc3fda85",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 77.84859434,
+      "over_50m": 5,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "681a1eded115961a1b9795865261cbc85f248704509c0a4b345d85c6b4a1ad1b",
+      "orders": 24,
+      "stops": 24,
+      "max_snap_m": 120.3530637,
+      "over_50m": 14,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "c5a8a15225a6d6b24319dcf4f5f89e83af05210056d5fb3724902eafc8398fc4",
+      "orders": 20,
+      "stops": 20,
+      "max_snap_m": 58.04080498,
+      "over_50m": 2,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "21180afde456041282756ae61486ce1f9f8013d31fb044f77ca6de720b1a0bcd",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 58.62437878,
+      "over_50m": 1,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "fd0661d5199c9911fea466afacc34b9fb7aec87691b31739ea7a2137fd82b868",
+      "orders": 29,
+      "stops": 29,
+      "max_snap_m": 92.87841807,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "32e3357e0e71f7612f313f959b0aa73c7793e1ac58b1b5ac3687fdc960a51aca",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 133.5590791,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "da8db972f888e43fb84da9161bd555d5b4d5bafc29091a02028857b0f2bb15f5",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 61.69026875,
+      "over_50m": 4,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "fe4eeb1153d728102e5ef7a54cfe7e0c1734eab34b1e2775fa89366bf07c9405",
+      "orders": 25,
+      "stops": 25,
+      "max_snap_m": 97.31438196,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "f0a905a86f3b80ffec41ece5572ddbc89bfb789d7c5bc8053cf925262784c387",
+      "orders": 25,
+      "stops": 25,
+      "max_snap_m": 60.26871768,
+      "over_50m": 1,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "8224951c8af3db6b7382ae2b6beb8e5bf1b1b5072928808ad94be73d32011027",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 90.73333491,
+      "over_50m": 6,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "79c44c6d4c846f4a9df07619e9082a4835d617c5c61013e48c55e374610dcc36",
+      "orders": 22,
+      "stops": 22,
+      "max_snap_m": 101.4802315,
+      "over_50m": 3,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "861669ed12db4332151d99e7ce1dec08839986ae779d1fd60a8084636376f0ed",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 70.6335632,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "30e9ec25e0874ca6ae9290a53e36326b43e39257fb5fa98696eec06bba54c791",
+      "orders": 28,
+      "stops": 28,
+      "max_snap_m": 91.14371225,
+      "over_50m": 7,
+      "unreachable_cells": 0
+    },
+    {
+      "source_group_sha256": "12c985d019e6fe2a5c71c8afc7366483ae03793588176aff3411ac34aabeb014",
+      "orders": 26,
+      "stops": 26,
+      "max_snap_m": 89.42345241,
+      "over_50m": 6,
+      "unreachable_cells": 0
+    }
+  ]
+}

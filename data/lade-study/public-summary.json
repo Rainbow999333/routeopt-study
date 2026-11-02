@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "case_id": "lade-chongqing-historical-21",
+  "study_type": "historical_tasks_counterfactual_routing",
+  "orders": 21,
+  "positions": 21,
+  "simulated_depots": 1,
+  "assumed_capacity_items": 50,
+  "assumed_max_vehicles": 1,
+  "matrix_sha256": "9b40afd697d2cbaa9dc850d8c823eea86adbd2681d51c2d74ac5bbef67de9e13",
+  "scenario_sha256": "13aa00fdc81e50748753e13c9cf10bdf68d1a4ff6fbfb2560402a06f20bee65b",
+  "source_repository": "https://huggingface.co/datasets/Cainiao-AI/LaDe-D",
+  "source_revision": "e1f85a3339848b9eb606ce543fcaaba3f4be1893",
+  "source_sha256": "ea503be5d475aa9a3ceb27f09ce6f910f48a02e78122428fbb4f9c724820323b",
+  "selected_source_sha256": "8f32964d78490618f20f44fad18f066fd9e38a06d5bed016a98f40ebfc20df56",
+  "quality": {
+    "threshold_m": 50,
+    "max_snap_m_including_depot": 35.95068817,
+    "all_pairs_reachable": true,
+    "selected_after_quality_attempts": 60,
+    "selection_before_solving": true,
+    "coordinate_datum_confirmed": false
+  },
+  "data_notice": {
+    "creators": "Wu et al. / Cainiao Network, LaDe",
+    "paper": "https://arxiv.org/abs/2306.10675",
+    "paper_dataset_license": "CC BY-NC 4.0",
+    "hf_card_license": "Apache-2.0",
+    "use": "attributed non-commercial research; raw records and positions not redistributed"
+  },
+  "assumptions": [
+    "公开脱敏历史任务，不是本人企业实习或现场配送验证。",
+    "发布坐标按WGS84解释是建模假设，源坐标基准尚未明确；吸附通过不等于基准已证实。",
+    "仓库取公共道路节点作模拟起终点；1辆车、50件容量为实验参数，不是实际车队数据。",
+    "每条包裹记录记1件；试验决策时刻设为该批最后接收时刻，不断言真实出车时刻。",
+    "采用当前OSM静态car.lua路网；未还原历史路况、车辆方式、停车、服务和承诺时间窗。"
+  ],
+  "runs": [
+    {
+      "solver": "nn",
+      "feasible": true,
+      "solver_elapsed_s": 5.557999975280836e-05,
+      "time_limit_s": null,
+      "improvement_pct": 0.0,
+      "distance_km": 12.053000000000003,
+      "vehicles": 1,
+      "total_drive_minutes": 23.06833333333333,
+      "longest_drive_minutes": 23.06833333333333
+    },
+    {
+      "solver": "2opt",
+      "feasible": true,
+      "solver_elapsed_s": 0.0016249899999820627,
+      "time_limit_s": 2.0,
+      "improvement_pct": 1.484277773168539,
+      "distance_km": 11.874099999999999,
+      "vehicles": 1,
+      "total_drive_minutes": 22.683333333333334,
+      "longest_drive_minutes": 22.683333333333334
+    },
+    {
+      "solver": "ortools",
+      "feasible": true,
+      "solver_elapsed_s": 3.0539074079988495,
+      "time_limit_s": 3,
+      "improvement_pct": 23.59578528167262,
+      "distance_km": 9.209000000000001,
+      "vehicles": 1,
+      "total_drive_minutes": 18.740000000000002,
+      "longest_drive_minutes": 18.740000000000002
+    }
+  ]
+}

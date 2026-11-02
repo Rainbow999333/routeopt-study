@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from routeopt.export import public_result, validate_experiment
 from routeopt.io import read_json
 from routeopt.decision import decision_summary
+from run_lade_case import validate_public_summary
 
 
 def save(path, data):
@@ -47,6 +48,8 @@ def main():
                       decision=decision_summary(result))
         cases.append(public)
     save(args.out / "scenarios.json", {"schema_version": "1.0", "scenarios": cases})
+    history = validate_public_summary(read_json(root / "data/lade-study/public-summary.json"))
+    save(args.out / "history.json", history)
     save(args.out / "geometry.json", geometry)
     osm = ET.parse(root / "data/chongqing/source/nanan-2026-11-01.osm").getroot()
     nodes = {n.get("id"): [float(n.get("lon")), float(n.get("lat"))] for n in osm.findall("node")}

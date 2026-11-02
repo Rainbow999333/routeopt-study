@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {verifyData, makeProjection, routeCoordinates, pathString, dispatchComparison} from "../web/model.mjs";
+import {verifyData, makeProjection, routeCoordinates, pathString, dispatchComparison, verifyHistoricalStudy} from "../web/model.mjs";
 
 const data = name => JSON.parse(readFileSync(new URL("../web/data/" + name, import.meta.url)));
 
@@ -15,6 +15,31 @@ test("published scenarios and road geometry share fingerprints and complete rout
       assert.equal(run.metrics.feasible, true);
       for (const route of run.routes) assert.ok(routeCoordinates(route, geometry).length > 2);
     }
+  }
+});
+
+test("historical study stays distinct and preserves conservative modeling assumptions", () => {
+  const history = verifyHistoricalStudy(data("history.json"));
+  assert.equal(history.orders, 21); assert.equal(history.positions, 21);
+  assert.equal(history.quality.coordinate_datum_confirmed, false);
+  assert.equal(history.quality.selected_after_quality_attempts, 60);
+  assert.ok(history.quality.max_snap_m_including_depot < 50);
+  assert.ok(history.assumptions.some(s => s.includes("假设")));
+  assert.notEqual(history.matrix_sha256, data("scenarios.json").scenarios[0].matrix_sha256);
+  const opt = history.runs.find(r => r.solver === "2opt");
+  assert.ok(Math.abs(opt.improvement_pct - 1.484277773168539) < 1e-8);
+});
+
+test("historical publication rejects private fields, altered claims and relaxed road gates", () => {
+  for (const change of [h => h.quality.max_snap_m_including_depot=51,
+                         h => h.quality.threshold_m=100,
+                         h => h.quality.selection_before_solving=false,
+                         h => h.runs[1].improvement_pct=50,
+                         h => h.data_notice.courier_id="private-id",
+                         h => h.positions=19,
+                         h => h.runs[1].distance_km=NaN]) {
+    const history = data("history.json"); change(history);
+    assert.throws(() => verifyHistoricalStudy(history));
   }
 });
 
