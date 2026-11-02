@@ -3,8 +3,8 @@
 ## Published release
 
 - Production: https://routeopt-study.pages.dev/
-- Immutable deployment: https://28eabbfd.routeopt-study.pages.dev/
-- Static asset source: `39d4246e5e2f1376b4a6f42f2aed82052736e9ce`.
+- Immutable deployment: https://7a4155d6.routeopt-study.pages.dev/
+- Static asset source: `29ebb2c63f25f8e872fed0da9d861fd08e2ef444`.
 - Cloudflare Pages Direct Upload, production branch `main`; only the eight files under `web/` are deployed.
 - Verified on 2026-11-03 (Asia/Shanghai), Chromium 154 on the existing free Linux test machine. All 32 browser checks passed: four widths (360/430/1024/1440), four scenarios, NN/2-opt visibility, vehicle selection, playback/pause, zoom/reset, keyboard focus/selection, real downloads and matching bytes, mobile touch, reduced motion, missing-data controls and recovery. Normal execution had no browser runtime/console errors.
 - All eight production resources separately returned HTTP 200 and matched the reviewed release byte-for-byte; JavaScript MIME types were checked. Default Python urllib identification received HTTP 403; the explicit `RouteoptReleaseCheck/1.0` client succeeded, as did curl and the browser. No access-control settings were changed.
@@ -13,6 +13,10 @@
 The account owner confirmed on 2026-11-03 that the production site opens and interactions work on their phone over mobile data. This is user-reported acceptance, separate from the automated browser evidence; phone model, browser and carrier were not recorded. It does not establish reachability on every carrier or browser. Personal career report/PPT and contest submission are also separate from this technical release.
 
 Future releases can use `wrangler pages deploy web --project-name routeopt-study --branch main` after the account owner authenticates. Preserve the previous release ZIP and deployment URL for rollback. This project already exists on Pages; no migration or temporary hosting account is needed.
+
+## Repository presentation update (2026-11-03)
+
+The default GitHub and Pages production branch is now main. The repository homepage points to the production website and topics include vehicle-routing, logistics, osrm and openstreetmap. The footer links to the public source. Nine additional live browser checks covered footer visibility/overflow at four widths and an actual GitHub-tab opening; see [footer report](verification/footer-2026-11-03.json). This update changes no experiment data.
 
 ## Rebuild
 

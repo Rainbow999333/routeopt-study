@@ -1,0 +1,22 @@
+{
+  "url": "https://routeopt-study.pages.dev/",
+  "date": "2026-11-02T16:38:49.491Z",
+  "checks": [
+    "footer visible 360",
+    "no overflow 360",
+    "footer visible 430",
+    "no overflow 430",
+    "footer visible 1024",
+    "no overflow 1024",
+    "footer visible 1440",
+    "no overflow 1440",
+    "source link opens GitHub"
+  ],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.57",
+    "revision": "@73c14f6228d7cd537c855007e8f88678969cc0eb",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.11"
+  }
+}
