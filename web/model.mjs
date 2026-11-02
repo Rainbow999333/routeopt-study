@@ -1,3 +1,20 @@
+export function dispatchComparison(scenario, rateText) {
+  if (typeof rateText !== "string" || !rateText.trim() || rateText.length > 24) throw new Error("cost rate invalid");
+  const rate = Number(rateText);
+  if (!Number.isFinite(rate) || rate < 0 || rate > 100) throw new Error("cost rate invalid");
+  const baseline = scenario.runs.find(r => r.solver === "nn");
+  const candidate = scenario.runs.find(r => r.solver === "2opt");
+  if (!baseline?.metrics.feasible || !candidate?.metrics.feasible) throw new Error("infeasible comparison");
+  if (scenario.decision?.matrix_sha256 !== scenario.matrix_sha256) throw new Error("decision snapshot mismatch");
+  const times = ["nn", "2opt"].map(solver => scenario.decision.runs[solver]);
+  for (const time of times) {
+    if (!time || [time.total_drive_minutes, time.longest_drive_minutes].some(v => v !== null && (!Number.isFinite(v) || v < 0))) throw new Error("invalid static times");
+  }
+  const distanceDifference = baseline.metrics.distance_km - candidate.metrics.distance_km;
+  return {rate, distanceDifference, costDifference: distanceDifference * rate, times,
+          baselineVehicles: baseline.metrics.vehicles_used, candidateVehicles: candidate.metrics.vehicles_used};
+}
+
 export function verifyData(bundle, geometry) {
   if (bundle?.schema_version !== "1.0" || geometry?.schema_version !== "1.0" ||
       !Array.isArray(bundle.scenarios) || !bundle.scenarios.length || bundle.scenarios.length > 10) {

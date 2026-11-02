@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 
 from routeopt.export import public_result, validate_experiment
 from routeopt.io import read_json
+from routeopt.decision import decision_summary
 
 
 def save(path, data):
@@ -42,7 +43,8 @@ def main():
         public = public_result(result, approved=True)
         # Road geometries are stored once across all scenarios.
         public.pop("geometry")
-        public.update(key=key, title=title, total_demand=sum(s.demand for s in scenario.orders))
+        public.update(key=key, title=title, total_demand=sum(s.demand for s in scenario.orders),
+                      decision=decision_summary(result))
         cases.append(public)
     save(args.out / "scenarios.json", {"schema_version": "1.0", "scenarios": cases})
     save(args.out / "geometry.json", geometry)

@@ -1,4 +1,4 @@
-import {verifyData, routeCoordinates, makeProjection, pathString} from "./model.mjs";
+import {verifyData, routeCoordinates, makeProjection, pathString, dispatchComparison} from "./model.mjs";
 
 const $ = id => document.getElementById(id);
 const ns = "http://www.w3.org/2000/svg";
@@ -107,6 +107,26 @@ function renderRouteList() {
     list.append(button);
   });
 }
+function renderDecision() {
+  if (!state.scenario) return;
+  try {
+    const comparison = dispatchComparison(state.scenario, $("cost-rate").value);
+    $("cost-error").hidden = true; $("cost-rate").setAttribute("aria-invalid", "false");
+    const duration = field => comparison.times.map(t => t[field] === null ? "未提供" : metric(t[field], 2)).join(" → ");
+    $("drive-total").textContent = duration("total_drive_minutes") + " 车分钟";
+    $("drive-longest").textContent = duration("longest_drive_minutes") + " 分钟";
+    const difference = comparison.costDifference;
+    $("cost-estimate").textContent = "按该假设，每批里程变动费用" + (difference >= 0 ? "减少 " : "增加 ") + metric(Math.abs(difference), 2) + " 元（NN → 2-opt）。";
+    $("dispatch-implication").textContent = "本场景用车 " + comparison.baselineVehicles + " → " + comparison.candidateVehicles +
+      " 辆。" + (comparison.baselineVehicles === comparison.candidateVehicles ? "可讨论访问顺序调整；没有减车依据。" : "车辆变化仍须结合实际服务要求核验。") + "固定月薪和车辆费用不随里程自动下降。";
+  } catch {
+    $("drive-total").textContent = "—"; $("drive-longest").textContent = "—";
+    $("dispatch-implication").textContent = "";
+    $("cost-error").hidden = false; $("cost-rate").setAttribute("aria-invalid", "true");
+    $("cost-estimate").textContent = "当前不能计算费用差；请核对输入及实验数据。";
+  }
+}
+
 function renderScenario() {
   stopPlayback(true); state.selectedRoute = null;
   const scenario = state.scenario, baseline = run("nn"), candidate = run("2opt"), m = candidate.metrics;
@@ -126,6 +146,7 @@ function renderScenario() {
   $("map-description").textContent = scenario.title + "。重庆南岸 " + scenario.orders_count +
     " 个公共道路节点上的模拟配送，地图显示真实道路折线。详细指标见下方表格。";
   drawRoutes(); drawStops(); renderTable(); renderRouteList(); updateZoom();
+  renderDecision();
   $("stop-info").textContent = "圆点为模拟配送位置，方块为模拟仓库。";
 }
 function updateZoom() {
@@ -204,6 +225,7 @@ async function boot() {
     $("zoom-in").addEventListener("click", () => {state.zoom = Math.min(2.5, state.zoom + .25); updateZoom();});
     $("zoom-out").addEventListener("click", () => {state.zoom = Math.max(.75, state.zoom - .25); updateZoom();});
     $("zoom-reset").addEventListener("click", () => {state.zoom = 1; updateZoom();});
+    $("cost-rate").addEventListener("input", renderDecision);
     reducedMotion.addEventListener("change", () => stopPlayback(true));
     document.addEventListener("visibilitychange", () => {if (document.hidden) stopPlayback();});
     renderScenario();

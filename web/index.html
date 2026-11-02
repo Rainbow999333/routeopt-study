@@ -70,6 +70,18 @@
           <div><h3>让数字接受同一把尺子的检验。</h3><p>同一组点位、同一份矩阵、同一套容量约束。<br>里程均经独立校验器重新计算。</p></div>
           <div class="table-scroll"><table><caption class="sr-only">当前场景算法指标对比</caption><thead><tr><th scope="col">方案</th><th scope="col">里程 km</th><th scope="col">车辆</th><th scope="col">装载率</th><th scope="col">求解耗时</th><th scope="col">校验</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
         </div>
+        <div class="decision-area" aria-labelledby="decision-title">
+          <div><p class="eyebrow">调度决策</p><h3 id="decision-title">少走的路，意味着什么？</h3><p>同时看行驶时间、车辆和变动费用。<br>费用是按输入假设测算，不是企业已实现的收益。</p></div>
+          <div class="decision-detail">
+            <dl class="decision-times"><div><dt>累计车辆行驶时间</dt><dd id="drive-total">未读取</dd></div><div><dt>最长单车行驶时间</dt><dd id="drive-longest">未读取</dd></div></dl>
+            <label class="cost-field" for="cost-rate">假设里程变动成本（元/车公里）<input id="cost-rate" type="number" min="0" max="100" step="any" value="1" inputmode="decimal" aria-describedby="cost-assumption cost-error"></label>
+            <p id="cost-assumption" class="decision-note">默认 1 元仅作敏感性演示，非重庆企业报价；不含工资、车辆固定费用和系统维护费。</p>
+            <p id="cost-error" role="alert" hidden>请输入 0–100 之间的有限数值。</p>
+            <p id="cost-estimate" class="cost-estimate" aria-live="polite">正在读取可比较结果…</p>
+            <p id="dispatch-implication" class="decision-note"></p>
+            <p class="decision-note">时间来自 OSRM 静态模型，不含停车、装卸、等待和实时拥堵。累计车分钟不等于送达时间；最长路线只在同时出发等假设下反映完成时间，均非实测工时或承诺时效。</p>
+          </div>
+        </div>
       </div>
     </section>
 

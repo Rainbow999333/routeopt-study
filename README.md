@@ -4,6 +4,8 @@ A reproducible toolkit for last-mile delivery route optimization: compare a capa
 
 Live experiment: **https://routeopt-study.pages.dev/** — four precomputed Chongqing road scenarios, simulated demand, no online solver or visitor login. See [deployment and verification](docs/web.md).
 
+The website includes [static driving-time and variable-cost interpretation](docs/decision.md) for dispatch decisions. Costs are explicitly visitor assumptions, not measured operating savings. A separate [LaDe Chongqing research audit](docs/lade-research.md) checks public historical records without presenting unvalidated orders as a real-road result.
+
 ## Quick start
 
 Python 3.11+; the base toolkit has no runtime dependencies.
