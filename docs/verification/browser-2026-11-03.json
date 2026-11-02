@@ -1,0 +1,56 @@
+{
+  "url": "https://routeopt-study.pages.dev/",
+  "date": "2026-11-02T16:13:34.214Z",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.57",
+    "revision": "@73c14f6228d7cd537c855007e8f88678969cc0eb",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.11"
+  },
+  "widths": [
+    360,
+    430,
+    1024,
+    1440
+  ],
+  "checks": [
+    "no horizontal overflow 360",
+    "loaded 24 nodes and depot 360",
+    "no horizontal overflow 430",
+    "loaded 24 nodes and depot 430",
+    "no horizontal overflow 1024",
+    "loaded 24 nodes and depot 1024",
+    "no horizontal overflow 1440",
+    "loaded 24 nodes and depot 1440",
+    "standard metrics",
+    "four scenarios",
+    "scenario standard",
+    "scenario small-vehicle",
+    "scenario large-vehicle",
+    "scenario higher-demand",
+    "NN visibility",
+    "2opt visibility",
+    "vehicle selection",
+    "clear selection",
+    "zoom changes transform",
+    "zoom reset",
+    "playback advances",
+    "pause stable",
+    "keyboard node info",
+    "both real downloads",
+    "download bytes match approved source",
+    "reduced motion disables playback",
+    "mobile touch zoom",
+    "mobile view switch",
+    "keyboard scenario select",
+    "normal runtime no errors",
+    "failed load safe controls",
+    "recovery after failed load"
+  ],
+  "normalErrors": [],
+  "downloads": [
+    "comparison.csv",
+    "scenarios.json"
+  ]
+}

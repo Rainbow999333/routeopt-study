@@ -1,0 +1,62 @@
+{
+  "url": "https://routeopt-study.pages.dev/",
+  "files": [
+    {
+      "path": "app.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "bytes": 12207,
+      "sha256": "e2b114e2235112e04709178f9cafd1b81471af78f611a96c6ee9f8d926e1464c"
+    },
+    {
+      "path": "data/comparison.csv",
+      "status": 200,
+      "mime": "text/csv",
+      "bytes": 1261,
+      "sha256": "4edeb8ca54646b944d117f3f28b013c148580b230e7f0e001614ac11f68923a3"
+    },
+    {
+      "path": "data/geometry.json",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 165850,
+      "sha256": "810639d5b67e7c118c4e118452abbd0bba285d618d88bf733d80c91b2169f6bc"
+    },
+    {
+      "path": "data/roads.json",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 545821,
+      "sha256": "1e808c7405dca4722d70ba1e0c30d292c6445267836262ba16f2a2d6ad2bb8d8"
+    },
+    {
+      "path": "data/scenarios.json",
+      "status": 200,
+      "mime": "application/json",
+      "bytes": 15870,
+      "sha256": "e061f7ec0154dc779e171800ec4609611f9f1cebfb88436baec211c31fbe1f91"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "mime": "text/html",
+      "bytes": 10813,
+      "sha256": "a2e3a642089651ee2d551de192b517a7a62dca15c9b1fbc04130d83cdca4b549"
+    },
+    {
+      "path": "model.mjs",
+      "status": 200,
+      "mime": "application/javascript",
+      "bytes": 3304,
+      "sha256": "da692cbcf7387aff47af1396fe0f025c3c98ddc1f679042e1a5366d2331aed2d"
+    },
+    {
+      "path": "styles.css",
+      "status": 200,
+      "mime": "text/css",
+      "bytes": 15540,
+      "sha256": "126dddf2e1852d72d8785bda307aed2e7d53f7d18c93f528ad8f6bffb4eb0338"
+    }
+  ],
+  "all_bytes_match": true
+}

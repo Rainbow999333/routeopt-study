@@ -2,6 +2,8 @@
 
 A reproducible toolkit for last-mile delivery route optimization: compare a capacity-constrained nearest-neighbor baseline with directed-safe 2-opt, validate solutions independently, and export experiment records.
 
+Live experiment: **https://routeopt-study.pages.dev/** — four precomputed Chongqing road scenarios, simulated demand, no online solver or visitor login. See [deployment and verification](docs/web.md).
+
 ## Quick start
 
 Python 3.11+; the base toolkit has no runtime dependencies.

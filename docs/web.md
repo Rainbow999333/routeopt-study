@@ -1,5 +1,21 @@
 # Static website
 
+## Published release
+
+- Production: https://routeopt-study.pages.dev/
+- Immutable deployment: https://28eabbfd.routeopt-study.pages.dev/
+- Static asset source: `39d4246e5e2f1376b4a6f42f2aed82052736e9ce`.
+- Cloudflare Pages Direct Upload, production branch `codex/routeopt-v1`; only the eight files under `web/` are deployed.
+- Verified on 2026-11-03 (Asia/Shanghai), Chromium 154 on the existing free Linux test machine. All 32 browser checks passed: four widths (360/430/1024/1440), four scenarios, NN/2-opt visibility, vehicle selection, playback/pause, zoom/reset, keyboard focus/selection, real downloads and matching bytes, mobile touch, reduced motion, missing-data controls and recovery. Normal execution had no browser runtime/console errors.
+- All eight production resources separately returned HTTP 200 and matched the reviewed release byte-for-byte; JavaScript MIME types were checked. Default Python urllib identification received HTTP 403; the explicit `RouteoptReleaseCheck/1.0` client succeeded, as did curl and the browser. No access-control settings were changed.
+- Reports: [browser](verification/browser-2026-11-03.json), [public resources](verification/public-http-2026-11-03.json). Screenshots and a 15-second actual-playback MP4 are retained in the separate submission evidence folder, outside the website.
+
+Real phone/carrier-network access remains a separate user check; Linux Chromium emulation does not prove Safari or local mobile-network reachability. Personal career report/PPT and contest submission are also separate from this technical release.
+
+Future releases can use `wrangler pages deploy web --project-name routeopt-study --branch codex/routeopt-v1` after the account owner authenticates. Preserve the previous release ZIP and deployment URL for rollback. This project already exists on Pages; no migration or temporary hosting account is needed.
+
+## Rebuild
+
 Build directly from the committed verified scenario runs:
 
 ```bash
